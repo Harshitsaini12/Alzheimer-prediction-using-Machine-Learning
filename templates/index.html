@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Alzhiemer</title>
+</head>
+<body>
+    
+    <h1 align ='center'> Alzhiemer Prediction Model</h1>
+    
+    <form action="#" method="post" align="center" enctype="multipart/form-data">
+    <div class="input-group mb-3">
+        <input type="file" class="form-control" id="inputGroupFile02" accept="image/*" onchange="loadFile(event)" name="imagefile">
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+      </div>
+      <img id="output" alt="alzhiemer image"/><br/><br/>
+      <button type="submit">submit</button>
+      <script>
+        var loadFile = function(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+            var output = document.getElementById('output');
+            output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
+        </script>
+    </form><br/><br/>
+
+    {% if prediction %}
+        <p class="text-center">it is a {{prediction}}</p>
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
